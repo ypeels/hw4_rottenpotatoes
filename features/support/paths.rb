@@ -15,7 +15,10 @@ module NavigationHelpers
 
     when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
     when /^the movies page$/ then '/movies'
+    
+    # Homework 4 Scenario 1
     when /^the edit page for \"Alien\"$/ then '/movies/2/edit'
+    when /^the details page for \"Alien\"$/ then '/movies/2'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
