@@ -22,21 +22,38 @@ Background: movies in database
 # (2) create new step definition
 # (3) possibly add a line or two to features/support/paths.rb
 Scenario: add director to existing movie
-  When I go to the edit page for "Alien"
-  And  I fill in "Director" with "Ridley Scott"
-  And  I press "Update Movie Info"
-  Then the director of "Alien" should be "Ridley Scott"
 
-## Requirements
-## modify existing "Show Movie" view
-## add a route, view, and controller method
-#Scenario: find movie with same director
-#  Given I am on the details page for "Star Wars"
-#  When  I follow "Find Movies With Same Director"
-#  Then  I should be on the Similar Movies page for "Star Wars"
-#  And   I should see "THX-1138"
-#  But   I should not see "Blade Runner"
-#
+  # features/support/paths.rb
+  When I go to the edit page for "Alien"
+  
+  # app/views/movies/edit.html.haml
+  And  I fill in "Director" with "Ridley Scott"
+  
+  # no new code
+  And  I press "Update Movie Info"
+  
+  # app/views/movies.show.html.haml + features/step_definitions/movie_steps.rb 
+  Then the director of "Alien" should be "Ridley Scott"
+  
+  
+
+# Requirements
+# modify existing "Show Movie" view
+# add a route, view, and controller method
+Scenario: find movie with same director
+
+  # features/support/paths.rb
+  Given I am on the details page for "Star Wars"
+  
+  # app/views/movies.show.html.haml + config/routes.rb?
+  When  I follow "Find Movies With Same Director"
+  
+  Then  I should be on the Similar Movies page for "Star Wars"
+  And   I should see "THX-1138"
+  But   I should not see "Blade Runner"
+  
+  
+
 ## Sad path
 #Scenario: can't find similar movies if we don't know director (sad path)
 #  Given I am on the details page for "Alien"

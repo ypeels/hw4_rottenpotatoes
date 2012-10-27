@@ -13,18 +13,24 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-    when /^the movies page$/ then '/movies'
-    
-    # Homework 4 Scenario 1
-    when /^the edit page for \"Alien\"$/ then '/movies/2/edit'
-    when /^the details page for \"Alien\"$/ then '/movies/2'
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
+      # Add more mappings here.
+      # Here is an example that pulls values out of the Regexp:
+      #
+      #   when /^(.*)'s profile page$/i
+      #     user_profile_path(User.find_by_login($1))
+      
+      when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
+      when /^the movies page$/ then '/movies'
+      
+      # Homework 4 Scenario 1
+      #when /^the edit page for \"Alien\"$/ then '/movies/2/edit'
+      # better - inspired by Rails' built-in comment
+      when /^the edit page for \"(.*)\"$/ then edit_movie_path(Movie.find_by_title($1))
+      when /^the details page for \"(.*)\"$/ then movie_path(Movie.find_by_title($1))
+      
+      # Homework 4 Scenario 2
+      #when /^the details page for \"Star Wars\"$/ then '/movies/1'
+      # ha, subsumed by my general code above now
 
     else
       begin
