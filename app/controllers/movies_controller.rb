@@ -65,6 +65,7 @@ class MoviesController < ApplicationController
   end
   
   def similar
+    @movies = Movie.find_by_director(params[:director])
   end
 
 end

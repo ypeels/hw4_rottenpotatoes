@@ -52,6 +52,7 @@ Scenario: find movie with same director
   Then  I should be on the Similar Movies page for "Star Wars"
   
   # TDD for new functionality.
+  # extract in app/views/movies/similar.html.haml
   And   I should see "THX-1138"
   But   I should not see "Blade Runner"
   

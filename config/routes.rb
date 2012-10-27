@@ -11,18 +11,20 @@ Rottenpotatoes::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Homework 4 Scenario 2
-  # cf. Section 5.6 Figure 5.8
-  # must go BEFORE resources :movies, otherwise it'll search for "id = similar"
-  #post '/movies/similar'
+  # hint leads to Section 4.1 "Non-resource-based routes"
+  # i THINK this has to precede "resources :movies" (else looks for movie with id = similar)
+  match 'movies/similar'
   
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :movies do
+  resources :movies #do
+  
+
     
-    # Homework 4 Scenario 2
+    # Homework 4 Scenario 2 - alternative (nested resource)
     # http://guides.rubyonrails.org/routing.html#adding-more-restful-actions
-    get 'similar'
-  end
+    #get 'similar'
+  #end
   
 
 

@@ -30,7 +30,7 @@ module NavigationHelpers
       
       # Homework 4 Scenario 2
       #when /^the details page for \"Star Wars\"$/ then '/movies/1' # ha, subsumed by my general code above now
-      when /^the Similar Movies page for \"(.*)\"$/ then movie_similar_path(Movie.find_by_title($1))
+      when /^the Similar Movies page for \"(.*)\"$/ then movies_similar_path
       
 
     else
