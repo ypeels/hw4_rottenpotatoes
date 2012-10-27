@@ -29,8 +29,9 @@ module NavigationHelpers
       when /^the details page for \"(.*)\"$/ then movie_path(Movie.find_by_title($1))
       
       # Homework 4 Scenario 2
-      #when /^the details page for \"Star Wars\"$/ then '/movies/1'
-      # ha, subsumed by my general code above now
+      #when /^the details page for \"Star Wars\"$/ then '/movies/1' # ha, subsumed by my general code above now
+      when /^the Similar Movies page for \"(.*)\"$/ then movie_similar_path(Movie.find_by_title($1))
+      
 
     else
       begin

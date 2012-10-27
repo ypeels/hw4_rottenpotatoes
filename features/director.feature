@@ -29,7 +29,7 @@ Scenario: add director to existing movie
   # app/views/movies/edit.html.haml
   And  I fill in "Director" with "Ridley Scott"
   
-  # no new code
+  # no new code - passes immediately
   And  I press "Update Movie Info"
   
   # app/views/movies.show.html.haml + features/step_definitions/movie_steps.rb 
@@ -42,13 +42,16 @@ Scenario: add director to existing movie
 # add a route, view, and controller method
 Scenario: find movie with same director
 
-  # features/support/paths.rb
+  # passes immediately (with my extra features/support/paths.rb code from Scenario 1)
   Given I am on the details page for "Star Wars"
   
   # app/views/movies.show.html.haml + config/routes.rb?
   When  I follow "Find Movies With Same Director"
   
+  # features/support/paths.rb (not QUITE duplicated information - you have to confirm the mapping!)
   Then  I should be on the Similar Movies page for "Star Wars"
+  
+  # TDD for new functionality.
   And   I should see "THX-1138"
   But   I should not see "Blade Runner"
   
