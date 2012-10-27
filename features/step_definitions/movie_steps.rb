@@ -63,4 +63,16 @@ Then /I should see all of the movies/ do
 end
 
 
+# Homework 4 Part 3 Scenario 1
+Then /the director of \"(.*)\" should be \"(.*)\"/ do |movie, director|
+
+  pending "go to main page"
+  pending "click on More about Alien"
+  pending "verify director field"
+  flunk "Homework 4 Part 3 Scenario 1 unimplemented\n" +
+    "but captured \"#{movie}\" directed by \"#{director}\""
+  
+end
+
+
 
