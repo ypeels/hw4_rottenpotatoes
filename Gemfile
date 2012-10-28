@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+# Homework 4
+gem 'simplecov', :require => false
+
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
@@ -40,3 +43,4 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'haml'
+

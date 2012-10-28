@@ -69,5 +69,7 @@ Then /the director of \"(.*)\" should be \"(.*)\"/ do |movie, director|
   step "Then I should see \"Director:\" before \"#{director}\""
 end
 
-
+#Then /I should die here/ do
+#  flunk "#{page.body}"
+#end
 

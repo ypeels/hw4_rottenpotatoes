@@ -51,17 +51,23 @@ Scenario: find movie with same director
   # features/support/paths.rb (not QUITE duplicated information - you have to confirm the mapping!)
   Then  I should be on the Similar Movies page for "Star Wars"
   
-  # TDD for new functionality.
-  # extract in app/views/movies/similar.html.haml
+  # TDD for new functionality: spec/controllers/movies_controller_spec.rb + spec/models/movie_spec.rb
+  # also need to update app/views/movies/similar.html.haml
   And   I should see "THX-1138"
   But   I should not see "Blade Runner"
   
+ 
   
 
-## Sad path
-#Scenario: can't find similar movies if we don't know director (sad path)
-#  Given I am on the details page for "Alien"
-#  Then  I should not see "Ridley Scott"
-#  When  I follow "Find Movies With Same Director"
-#  Then  I should be on the home page
-#  And   I should see "'Alien' has no director info"
+# Sad path
+Scenario: can't find similar movies if we don't know director (sad path)
+
+  # should pass out of box
+  Given I am on the details page for "Alien"
+  Then  I should not see "Ridley Scott"
+  When  I follow "Find Movies With Same Director"
+  
+  # app/controllers/movies_controller.rb + spec
+  # also had to modify show.html.haml to pass title
+  And  I should be on the home page
+  And   I should see "'Alien' has no director info"

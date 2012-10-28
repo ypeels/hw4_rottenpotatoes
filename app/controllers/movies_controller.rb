@@ -65,7 +65,16 @@ class MoviesController < ApplicationController
   end
   
   def similar
-    @movies = Movie.find_by_director(params[:director])
+  
+    # Scenario 3 error-checking: abort if director was blank
+    if params[:director] == nil || params[:director] == ""
+      flash[:notice] = "'#{params[:title]}' has no director info"
+      redirect_to movies_path
+      return
+    end
+  
+    @movies = Movie.find_by_director(params[:director])    
+
   end
 
 end

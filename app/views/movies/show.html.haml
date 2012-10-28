@@ -15,7 +15,7 @@
     = @movie.director
 
     -# Homework 4 Scenario 2 (can't use link_to? don't know how else to modify routes.rb)
-    = link_to "Find Movies With Same Director", movies_similar_path(:director => "#{@movie.director}")
+    = link_to "Find Movies With Same Director", movies_similar_path(:director => "#{@movie.director}", :title => "#{@movie.title}")
 
 %h3 Description:
 

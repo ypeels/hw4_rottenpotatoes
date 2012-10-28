@@ -32,7 +32,32 @@ describe MoviesController do
       end
       
     end
+    
+    # Scenario 3
+    describe 'after blank director search' do
+      
+      before :each do
+        Movie.should_not_receive(:find_by_director)#.with("").and_return([])
+      end
+      
+      it 'should call the model method with blank director' do     
+        get :similar, {:director => "", :title => "random title"}
+      end
+      
+      #it 'should have a nonzero movie title available' do
+      #  params[:title].should be != nil
+      #  params[:title].should be != ""
+      #end
+      
+      it 'should render the main page' do
+        get :similar, {:director => "", :title => "random title"}
+        
+        # http://stackoverflow.com/questions/648044/rspec-should-redirect-to-problem
+        response.should redirect_to movies_path
+      end
+      
+    end
   
-  end
   
+  end  
 end
