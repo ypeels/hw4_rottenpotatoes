@@ -4,6 +4,23 @@ require 'spec_helper'
 
 describe MoviesController do
 
+  # get controller coverage up to 90% to clear homework (did i not write enough new controller code??)
+  describe 'create movie' do
+    before :each do
+      m = mock('movie1', :title => 'movie1title') # lecture 10 slide 30
+      Movie.should_receive(:create!).and_return(m)
+    end
+  
+    it 'should call create!()' do
+      post :create, :movie => mock('movie1')
+    end
+    
+    it 'should render the main page' do
+      post :create, :movie => mock('movie1')
+      response.should redirect_to movies_path
+    end
+  end
+
   describe 'find Similar Movies' do
   
     before :each do
